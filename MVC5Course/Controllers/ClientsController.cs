@@ -31,7 +31,7 @@ namespace MVC5Course.Controllers
 
         [HttpPost]
         [Route("BatchUpdate")]
-        public ActionResult BatchUpdate(IList<ClientBatchViewModel> data)
+        public ActionResult BatchUpdate(IList<ClientBatchViewModel> data, PageConditionViewModel page)
         {
             if (ModelState.IsValid)
             {
@@ -133,24 +133,22 @@ namespace MVC5Course.Controllers
             return View(client);
         }
 
-        // POST: Clients/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("edit/{id}")]
-        public ActionResult Edit([Bind(Include = "ClientId,FirstName,MiddleName,LastName,Gender,DateOfBirth,CreditRating,XCode,OccupationId,TelephoneNumber,Street1,Street2,City,ZipCode,Longitude,Latitude,Notes,IdNumber")] Client client)
+        public ActionResult Edit(int id, FormCollection form)
         {
-            if (ModelState.IsValid)
+            var client = repo.Find(id);
+
+            if (TryUpdateModel(client, "", null, new String[] { "FirstName" }))
             {
-                var db = repo.UnitOfWork.Context;
-                db.Entry(client).State = EntityState.Modified;
-                db.SaveChanges();
+                repo.UnitOfWork.Commit();
                 return RedirectToAction("Index");
             }
 
             ViewBag.OccupationId = new SelectList(occuRepo.All(), "OccupationId", "OccupationName", client.OccupationId);
-            return View(client);
+            Client item = repo.Find(client.ClientId);
+            return View(item);
         }
 
         // GET: Clients/Delete/5
