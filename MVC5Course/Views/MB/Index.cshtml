@@ -11,3 +11,9 @@ ViewData["a"] = @ViewData["a"]
 ViewBag.b = @ViewBag.b
 <br />
 TempData["c"] = @TempData["c"]
+<ul>
+    @foreach (var item in ViewBag.Clients)
+    {
+        <li>@item.FirstName</li>
+    }
+</ul>

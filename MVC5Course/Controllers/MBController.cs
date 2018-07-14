@@ -11,6 +11,7 @@ namespace MVC5Course.Controllers
         // GET: MB
         public ActionResult Index()
         {
+            ViewBag.Clients = db.Client.Take(5).ToList();
             ViewData.Model = "modelData";
             ViewData["a"] = "msgA";
             ViewBag.b = "msgB";
