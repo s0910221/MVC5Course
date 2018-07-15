@@ -4,22 +4,22 @@
 
 
 
-@for (int i = 0; i < items.Length; i++)
+@foreach (var item in items)
 {
-    @items[i]
+    @item
 }
 
 
-@for (int i = 0; i < items.Length; i++)
+@foreach (var item in items)
 {
-    @(items[i].ToString() + " ");
+    @(item + " ")
 }
 
 
 <ul>
-@for (int i = 0; i < items.Length; i++)
+@foreach (var item in items)
 {
-  <li>@items[i]</li>
+  <li>@item</li>
 }
 </ul>
 
