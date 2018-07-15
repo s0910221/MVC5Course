@@ -157,9 +157,10 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LocalOnlyAttribute.cs" />
+    <Compile Include="Controllers\RazorController.cs" />
+    <Compile Include="Filters\LocalOnlyAttribute.cs" />
     <Compile Include="Controllers\MBController.cs" />
-    <Compile Include="Controllers\ShareDataAttribute.cs" />
+    <Compile Include="Filters\ShareDataAttribute.cs" />
     <Compile Include="Models\PageConditionViewModel.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -335,6 +336,7 @@
     <Content Include="Views\AR\Index.cshtml" />
     <Content Include="Views\MB\Index.cshtml" />
     <Content Include="Views\Shared\Error_DbEntityValidationException.cshtml" />
+    <Content Include="Views\Razor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />
