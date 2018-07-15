@@ -1,18 +1,18 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-	
+
 namespace MVC5Course.Models
-{   
-	public  class ClientRepository : EFRepository<Client>, IClientRepository
-	{
+{
+    public class ClientRepository : EFRepository<Client>, IClientRepository
+    {
         public IQueryable<Client> All(bool isAll = false)
         {
             if (isAll)
             {
                 return base.All();
             }
-            return base.All().Where(p => p.CreditRating < 2 && p.IsDeleted == false);
+            return base.All().Where(p => p.IsDeleted == false);
         }
         public Client Find(int id)
         {
@@ -37,8 +37,8 @@ namespace MVC5Course.Models
         }
     }
 
-	public  interface IClientRepository : IRepository<Client>
-	{
+    public interface IClientRepository : IRepository<Client>
+    {
 
-	}
+    }
 }
