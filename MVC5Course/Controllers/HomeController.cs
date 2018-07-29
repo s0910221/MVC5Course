@@ -14,13 +14,13 @@ namespace MVC5Course.Controllers
             return View();
         }
 
-        [ShareData]
+        //[ShareData]
         public ActionResult About()
         {
             return View();
         }
 
-        [LocalOnly]
+        //[LocalOnly]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
